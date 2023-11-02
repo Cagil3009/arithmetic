@@ -4,9 +4,11 @@ enum  ArithmeticExpression:
     case Plus(x: ArithmeticExpression, y: ArithmeticExpression)
     case Mult(x: ArithmeticExpression, y: ArithmeticExpression)
     case Div(x: ArithmeticExpression, y: ArithmeticExpression)
+    case Pow(x: ArithmeticExpression, y: ArithmeticExpression)
 
-//Companion-Object (Begleitobject)
-// companion object and its class can access each other’s private members (fields and methods)
+//Companion-Object &
+// its class can access each other’s private members (fields and methods)
+
 object Enums
 //recursive invocation of NUM ?
   def evaluate(expression: ArithmeticExpression): Double = expression match
@@ -15,22 +17,16 @@ object Enums
     case ArithmeticExpression.Plus(x,y) => evaluate(x) + evaluate(y)
     case ArithmeticExpression.Mult(x,y) => evaluate(x) * evaluate(y)
     case ArithmeticExpression.Div(x,y)  => evaluate(x) / evaluate(y)
+    case ArithmeticExpression.Pow(x,y)  => Math.pow(evaluate(x), evaluate(y))
 
 //Bring the given arithmetic expression into a human-readable format in infix notation
 //STRING INTERPOLATION
-//!soll keinen Text auf der Konsole ausgeben, sondern ganz normalen String --> also kein println()
   def pretty(expression: ArithmeticExpression): String = expression match
     case ArithmeticExpression.Num(x) => s"${ArithmeticExpression.Num(x)}"
     case ArithmeticExpression.Minus(x) => s"-${pretty(x)}"
     case ArithmeticExpression.Plus(x,y) => s"${pretty(x)} + ${pretty(y)}"
     case ArithmeticExpression.Mult(x,y) => s"${pretty(x)} * ${pretty(y)}"
     case ArithmeticExpression.Div(x,y) => s"${pretty(x)} / ${pretty(y)}"
-          //println(s"$name is $age years old")
+    case ArithmeticExpression.Pow(x,y) => s"${Math.pow(pretty(x).toDouble, pretty(y).toDouble)}"
 
-//wieso funktioniert diese Version nicht?
-/*case Num(x) => x
-case Minus(x) => -x
-case Plus(x, y) => x + y
-case Mult(x,y)=> x*y
-case Div(x,y) => x/y
-*/
+//println(s"$name is $age years old")

@@ -22,4 +22,9 @@ class ArithmeticExpressionForPretty extends AnyFunSuite {
   test("DivTestP"){
     assert(pretty(ArithmeticExpression.Div(x = ArithmeticExpression.Num(4), y = ArithmeticExpression.Num(1))) === "4")
   }
+
+  test("PowTestP"){
+    assert(pretty(ArithmeticExpression.Pow(x = ArithmeticExpression.Num(2), y= ArithmeticExpression.Num(2))) === "4")
+
+  }
 }
