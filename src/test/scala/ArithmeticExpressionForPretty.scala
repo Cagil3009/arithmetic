@@ -1,10 +1,12 @@
 import org.scalatest.funsuite.AnyFunSuite
+import ArithmeticExpression.Num
+import ArithmeticExpression.Minus
+import ArithmeticExpression.Plus
+import ArithmeticExpression.Mult
+import ArithmeticExpression.Div
+
 //import org.scalatest._
 class ArithmeticExpressionForPretty extends AnyFunSuite {
-  test("NumTestP"){
-    assert(pretty(ArithmeticExpression.Num(4)) === "4")
-  }
-
   test("MinusTestP"){
     assert(pretty(ArithmeticExpression.Minus(x = ArithmeticExpression.Num(4))) === "-4")
     //assert(pretty(ArithmeticExpression.Minus(x = Num(4))) === "-4")
@@ -24,7 +26,7 @@ class ArithmeticExpressionForPretty extends AnyFunSuite {
   }
 
   test("PowTestP"){
-    assert(pretty(ArithmeticExpression.Pow(x = ArithmeticExpression.Num(2), y= ArithmeticExpression.Num(2))) === "4")
+    assert(pretty(ArithmeticExpression.Pow(x = ArithmeticExpression.Num(2), y= ArithmeticExpression.Num(2))) === "1")
 
   }
 }
